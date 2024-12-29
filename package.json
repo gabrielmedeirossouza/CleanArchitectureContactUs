@@ -1,0 +1,31 @@
+{
+    "name": "back_end",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx ./Source/main.ts",
+        "lint:fix": "node fix-accessibility.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.10.2",
+        "@types/nodemailer": "^6.4.17",
+        "@typescript-eslint/eslint-plugin": "^8.18.2",
+        "@typescript-eslint/parser": "^8.18.2",
+        "eslint": "^9.17.0",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "express": "^4.21.2",
+        "nodemailer": "^6.9.16"
+    }
+}

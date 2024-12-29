@@ -19,12 +19,11 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "noImplicitAny": true,
-    "outDir": "./Dist",
+    "rootDirs": ["./Source"],
     "baseUrl": "./",
     "paths": {
-        "@/*": ["./Source/*"],
-        "Core/*": ["../../../Core/*"]
+        "@/*": ["./Source/*"]
     }
   },
-  "include": ["./Source", "../../../Core"]
+  "include": ["./Source"]
 }
