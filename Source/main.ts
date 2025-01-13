@@ -1,17 +1,17 @@
-import { LoggerFactory } from "./Core/Features/Logger/LoggerFactory"
+import { LoggerFactory } from "./Core/SystemFeatures/Logger/LoggerFactory"
 import { ExpressRequest } from "./Core/Infrastructure/Express/ExpressRequest"
 import { ExpressResponse } from "./Core/Infrastructure/Express/ExpressResponse"
-import { SendContactUs } from "./Features/ContactUs/Application/UseCases/SendContactUs"
-import { ContactUsEmailServiceFactory } from "./Features/ContactUs/Infrastructure/Email/ContactUsEmailServiceFactory"
-import { SendContactUsController } from "./Features/ContactUs/Presentation/Controllers/SendContactUsController"
-import { SendContactUsPresenter } from "./Features/ContactUs/Presentation/Presenters/SendContactUsPresenter"
+import { ContactUsEmailServiceFactory } from "./Features/Contact/Infrastructure/Email/ContactUsEmailServiceFactory"
+import { SendContactUsController } from "./Features/Contact/Presentation/Controllers/SendContactUsController"
 import express from "express"
+import { SystemRegistry } from "./Core/SystemFeatures/SystemRegistry"
+import { SendContactUsImpl } from "./Features/Contact/Application/UseCases/SendContactUsImpl"
 
-const logger = LoggerFactory.Create("SendContactUs")
+SystemRegistry.logger = LoggerFactory.Create()
+
 const contactUsEmailService = ContactUsEmailServiceFactory.Create()
-const sendContactUs = new SendContactUs(contactUsEmailService, logger)
-const sendContactUsPresenter = new SendContactUsPresenter
-const sendContactUsController = new SendContactUsController(sendContactUs, sendContactUsPresenter)
+const sendContactUs = new SendContactUsImpl(contactUsEmailService)
+const sendContactUsController = new SendContactUsController(sendContactUs)
 
 const app = express()
 

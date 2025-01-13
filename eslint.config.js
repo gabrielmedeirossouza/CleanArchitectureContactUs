@@ -28,7 +28,7 @@ const config = [
             quotes: ['error', 'double'],
             'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
             semi: ['error', 'never'],
-            'comma-dangle': ['error', 'never'],
+            'comma-dangle': ['error', 'never']
         },
     },
 ];

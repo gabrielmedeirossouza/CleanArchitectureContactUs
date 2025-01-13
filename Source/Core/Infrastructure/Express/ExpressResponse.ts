@@ -6,7 +6,7 @@ export class ExpressResponse implements Controller.Response {
         private readonly expressResponse: Response
     ) { }
 
-    public Send(status: Controller.Response.Status, data: Record<any, any>): void {
+    public Send(status: Controller.Response.Status, data: any): void {
         this.expressResponse
             .status(status)
             .json({
