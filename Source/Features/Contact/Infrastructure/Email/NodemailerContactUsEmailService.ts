@@ -1,10 +1,10 @@
-import { EmailService } from "@/Core/Application/EmailService"
 import { Result } from "@/Core/Base/Result"
 import { ContactUsEmailService } from "../../Application/Gateways/ContactUsEmailService"
 import { Contact } from "../../Domain/Entities/Contact"
+import { UnavailableService } from "@/Core/Application/UnavailableService"
 
 export class NodemailerContactUsEmailService implements ContactUsEmailService {
-    public SendContact(contact: Contact): Promise<Result<void, EmailService.ConnectionException<"email_service">>> {
+    public SendContact(contact: Contact): Promise<Result<void, UnavailableService>> {
         const template = /* html */`
             <h1>Olá, ${contact.name}!</h1>
 
@@ -25,7 +25,7 @@ export class NodemailerContactUsEmailService implements ContactUsEmailService {
             </footer>
         `.trim()
 
-        // return Promise.resolve(Result.Failure(new EmailService.ConnectionException("NodemailerContactUsEmailService.SendContact")))
+        // return Promise.resolve(Result.Failure({ code: "unavailable_service", message: "Unavailable service", service: "email_service" } as const))
         return Promise.resolve(Result.Success())
     }
 }

@@ -1,16 +1,16 @@
-import { Controller } from "@/Core/Presentation/Controllers/Controller"
+import { Http } from "@/Core/Presentation/Http"
 import { Response } from "express"
 
-export class ExpressResponse implements Controller.Response {
+export class ExpressResponse implements Http.Response {
     constructor(
         private readonly expressResponse: Response
     ) { }
 
-    public Send(status: Controller.Response.Status, data: any): void {
+    public Send(status: Http.Response.Status, data: any): void {
         this.expressResponse
             .status(status)
             .json({
-                status,
+                ok: String(status).startsWith("2"),
                 data
             })
     }

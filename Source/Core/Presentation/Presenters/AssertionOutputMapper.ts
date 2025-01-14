@@ -7,23 +7,43 @@ export class AssertionOutputMapper {
 
         for (const assertion of assertions) {
             if (assertion.code === "string_required") {
-                errors.push(`O argumento ${assertion.argument} é obrigatório.`)
+                errors.push({
+                    code: "string_required",
+                    argument: assertion.argument,
+                    message: `O argumento [${assertion.argument}] é obrigatório.`
+                })
             }
 
             if (assertion.code === "string_too_short") {
-                errors.push(`O argumento ${assertion.argument} deve conter no mínimo ${assertion.minLength} caracteres.`)
+                errors.push({
+                    code: "string_too_short",
+                    argument: assertion.argument,
+                    message: `O argumento [${assertion.argument}] deve conter no mínimo ${assertion.minLength} caracteres.`
+                })
             }
 
             if (assertion.code === "string_too_long") {
-                errors.push(`O argumento ${assertion.argument} deve conter no máximo ${assertion.maxLength} caracteres.`)
+                errors.push({
+                    code: "string_too_long",
+                    argument: assertion.argument,
+                    message: `O argumento [${assertion.argument}] deve conter no máximo ${assertion.maxLength} caracteres.`
+                })
             }
 
             if (assertion.code === "string_outside_range") {
-                errors.push(`O argumento ${assertion.argument} deve conter entre ${assertion.minLength} e ${assertion.maxLength} caracteres.`)
+                errors.push({
+                    code: "string_outside_range",
+                    argument: assertion.argument,
+                    message: `O argumento [${assertion.argument}] deve conter entre ${assertion.minLength} e ${assertion.maxLength} caracteres.`
+                })
             }
 
             if (assertion.code === "string_mismatch") {
-                errors.push(`O argumento ${assertion.argument} é inválido.`)
+                errors.push({
+                    code: "string_mismatch",
+                    argument: assertion.argument,
+                    message: `O argumento [${assertion.argument}] não corresponde ao padrão [${assertion.pattern}].`
+                })
             }
         }
 
